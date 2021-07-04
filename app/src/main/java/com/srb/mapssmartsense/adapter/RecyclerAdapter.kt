@@ -30,7 +30,6 @@ Log.i("unisex",dataList.toString())
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = dataList[position]
 
-        holder.binding.itemId.text = currentItem.id.toString()
         holder.binding.itemLat.text = currentItem.latitude.toString()
         holder.binding.itemLong.text = currentItem.longitude.toString()
         holder.binding.itemPlace.text = currentItem.place

@@ -62,37 +62,6 @@ class MapsFragment : Fragment(), OnMapReadyCallback, EasyPermissions.PermissionC
     ): View {
         binding = ActivityMapsBinding.inflate(layoutInflater)
 
-
-//        fusedLocationProviderClient =
-//            LocationServices.getFusedLocationProviderClient(requireContext())
-
-
-//        if (hasLocationPermission()) {
-//            if (lm.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-//                showLocation()
-//            }else{
-//                AlertDialog.Builder(requireContext())
-//                    .setMessage(" Location is off , Would you like to turn it on?")
-//                    .setPositiveButton( "Yes"){_,_->
-//                        requireActivity().startActivity(
-//                            Intent(ACTION_LOCATION_SOURCE_SETTINGS)
-//                        )
-//
-//                    }
-//                    .setNegativeButton(" No"){_,_->
-//
-//                    }
-//                    .setCancelable(true)
-//                    .create()
-//                    .show()
-//            }
-//
-//
-//        } else {
-//            requestLocationPermission()
-//        }
-
-
         onClicks()
 
         return binding.root
@@ -104,7 +73,6 @@ class MapsFragment : Fragment(), OnMapReadyCallback, EasyPermissions.PermissionC
             val geoCoder = Geocoder(requireContext())
             lat = location.latitude
             long = location.longitude
-//                    viewModel.long = location.longitude
             val currentLocation = geoCoder.getFromLocation(
                 location.latitude,
                 location.longitude,
@@ -138,10 +106,12 @@ class MapsFragment : Fragment(), OnMapReadyCallback, EasyPermissions.PermissionC
 
         // Add a marker in Sydney and move the camera
         val sydney = LatLng(lat,long)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in $place"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
         mMap.uiSettings.apply {
             isZoomControlsEnabled = true
+            isCompassEnabled = true
+            isScrollGesturesEnabled  = true
         }
 
 
@@ -149,7 +119,7 @@ class MapsFragment : Fragment(), OnMapReadyCallback, EasyPermissions.PermissionC
 
     override fun onResume() {
         super.onResume()
-//        val lm = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
 
         if (hasLocationPermission()) {
             Handler(Looper.getMainLooper()).postDelayed({
@@ -185,9 +155,6 @@ class MapsFragment : Fragment(), OnMapReadyCallback, EasyPermissions.PermissionC
             "Permission Granted!",
             Toast.LENGTH_SHORT
         ).show()
-
-
-//            checkLocationIsOn()
 
     }
 

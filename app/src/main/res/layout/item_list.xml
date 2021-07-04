@@ -4,19 +4,6 @@
     android:layout_height="80dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/item_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:layout_marginVertical="8dp"
-        app:layout_constraintStart_toEndOf="@+id/guideline10"
-        app:layout_constraintEnd_toStartOf="@id/item_place"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/item_place"
@@ -29,10 +16,10 @@
         android:textAlignment="center"
         android:maxLines="2"
         android:ellipsize="end"
-        app:layout_constraintStart_toEndOf="@id/item_id"
-        app:layout_constraintTop_toTopOf="@id/item_id"
+        app:layout_constraintStart_toEndOf="@+id/guideline10"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@id/item_lat"
-        app:layout_constraintBottom_toBottomOf="@id/item_id"
+        app:layout_constraintBottom_toBottomOf="parent"
         />
 
     <com.google.android.material.textview.MaterialTextView
